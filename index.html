@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="yostyle.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h4>تطبيق استراتيجية الفصل المقلوب</h4>
+        </nav>
+    </header>
+    <section class="section1"> 
+        <iframe id="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/BxRT3hus88Y?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <p id="video-progress">0% من الفيديو تم مشاهدته</p>
+        <div id="progress-bar-container">
+            <progress max="100" value="0" id="progress-bar"></progress>
+        </div>
+        <h1>الأهداف التعليمية</h1>    
+        <table>
+            <thead>
+                <tr>
+                    <th>الأهداف المعرفية</th>
+                    <th>الأهداف المهارية</th>
+                    <th>الأهداف الوجدانية</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>أن يعرف الطالب بداية عصر الدولة الحديثة</td>
+                    <td>أن يفهم الطالب أسباب سقوط الدولة الوسطى</td>
+                    <td>أن يفسر الطالب أسباب الانتصار على الهكسوس</td>
+                </tr>
+                <tr>
+                    <td>أن يحدد الطالب موقع النوبة على الخريطة</td>
+                    <td>أن يبين الطالب حدود الدولة الوسطى على الخريطة</td>
+                    <td>أن يرسم الطالب خريطة مصر في عصر الدولة الوسطى</td>
+                </tr>
+                <tr>
+                    <td>أن يشعر الطالب بالانتماء لوطنه</td>
+                    <td>أن يفتخر الطالب بتاريخ مصر العريق</td>
+                    <td>أن يقدر الطالب آثار الحضارة المصرية</td>
+                </tr>
+            </tbody>
+        </table>
+        <h1>المحتوى التعليمي</h1>
+        <ul>
+            <li> <h2>أولاً انهيار الدولة القديمة</h2> </li>
+            <li>
+                <p>انتهى عصر الدولة القديمة عند الأسرة العاشرة عندما قضى ملوك طيبة على حكم آخر حكام الأسرة العاشرة، وبهذا بدأ عصر جديد يسمى بعصر الدولة الوسطى...</p>
+            </li>
+            <!-- النصوص الأخرى هنا -->
+        </ul>
+    </section>
+    
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        var player;
+        var intervalId;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-video', {
+                events: {
+                    'onStateChange': onPlayerStateChange,
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            console.log("الفيديو جاهز للتشغيل");
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.PLAYING) {
+                intervalId = setInterval(updateVideoProgress, 1000);
+            } else {
+                clearInterval(intervalId);
+                document.getElementById("progress-bar").value = 0;
+            }
+        }
+
+        function updateVideoProgress() {
+            var progressText = document.getElementById('video-progress');
+            var progressBar = document.getElementById("progress-bar");
+            var duration = player.getDuration();
+            var currentTime = player.getCurrentTime();
+
+            if (duration > 0) {
+                var percentage = (currentTime / duration) * 100;
+                progressText.textContent = Math.round(percentage) + '% من الفيديو تم مشاهدته';
+                progressBar.value = percentage;
+                console.log("النسبة المئوية:", percentage);
+            }
+
+            if (progressBar.value >= 99) { 
+               window.alert("لقد انتهيت من مشاهدة الشرح سيتم توجيهك الي الامتحان")
+                location.href = "https://forms.office.com/r/9kJuXzfMkS";
+            }
+        }
+    </script>
+</body>
+</html>

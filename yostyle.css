@@ -1,0 +1,84 @@
+#progress-bar-container {
+    width: 560px;
+    height: 20px; /* زيادة ارتفاع الحاوية */
+    position: relative;
+    margin-top: 10px; /* إضافة مساحة فوق الحاوية */
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Cairo", sans-serif;
+}
+progress {
+    width: 100%; /* تأكد من أن العرض 100% */
+    height: 100%; /* تأكد من أن الارتفاع 100% */
+}
+header{
+    width: 100%;
+    height: 60px;
+}
+nav{
+    width: 100%;
+    background-color: blue;
+    font-family: "Cairo", sans-serif;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    color: #eee;
+    font-size: 20px;
+}
+.section1{
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+.section1 iframe{
+    margin-bottom: 20px;
+}
+.section1 h1,p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.section1 table{
+    border: solid black 1px;
+    width: 80%;
+    background-color: #eee;
+}
+.section1 table td{
+    text-align: center;
+    padding: 2px;
+}
+.section1 ul{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    list-style-type: none;
+}
+.section1 ul li h2{
+    margin-right: 20px;
+}
+.section1 ul li h3{
+    margin-right: 30px;
+}
+.section1 ul li p{
+    margin-right: 50px;
+    margin-left: 100px;
+}
+.section1 iframe{
+    width: 80%;
+}
+#progress-bar-container{
+    width: 80%;
+}
+
+@media (min-width: 1024px){
+    .section1 iframe{
+        height: 453px;
+    }
+}
